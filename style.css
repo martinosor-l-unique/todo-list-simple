@@ -21,12 +21,28 @@ button {
 }
 
 .task {
-  background: #333;
-  margin: 10px 0;
   padding: 10px;
+  margin: 10px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: white;
+  border-radius: 6px;
+}
+
+/* 🍞 Courses */
+.task.Courses {
+  background-color: #f39c12;
+}
+
+/* 💻 Travail */
+.task.Travail {
+  background-color: #3498db;
+}
+
+/* 🏠 Maison */
+.task.Maison {
+  background-color: #2ecc71;
 }
 
 .done {
