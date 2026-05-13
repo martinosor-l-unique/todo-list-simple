@@ -50,6 +50,13 @@ button {
   <h1>To-do List</h1>
 
   <input id="taskInput" placeholder="Nouvelle tâche">
+ 
+  <select id="categoryInput">
+  <option value="Courses">🍞 Courses</option>
+  <option value="Travail">💻 Travail</option>
+  <option value="Maison">🏠 Maison</option>
+  </select>
+  
   <button onclick="addTask()">Ajouter</button>
 
   <div id="list"></div>
@@ -66,12 +73,16 @@ function render() {
     const div = document.createElement("div");
     div.className = "task";
 
+
+
     div.innerHTML = `
-      <span class="${task.done ? 'done' : ''}"
-            onclick="toggleTask(${index})">
-        ${task.text}
-      </span>
-      <button onclick="deleteTask(${index})">X</button>
+    <span class="${task.done ? 'done' : ''}"
+        onclick="toggleTask(${index})">
+
+    [${task.category}] ${task.text}
+
+    </span>
+    <button onclick="deleteTask(${index})">X</button>
     `;
 
     list.appendChild(div);
@@ -82,9 +93,15 @@ function render() {
 
 function addTask() {
   const input = document.getElementById("taskInput");
+  const category = document.getElementById("categoryInput");
   if (input.value.trim() === "") return;
 
-  tasks.push({ text: input.value, done: false });
+  tasks.push({
+    text: input.value,
+    done: false,
+    category: category.value
+  });
+  
   input.value = "";
   render();
 }
